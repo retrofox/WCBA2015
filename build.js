@@ -8,12 +8,12 @@ var WPCOM = require('wpcom');
 var oauth = require('wpcom-oauth-cors')('41012', { scope: "global" });
 
 oauth.get(function(token){
-  console.log(token);
+  document.getElementById('token').innerHTML = auth.access_token;
 
   // Create wpcom instance given the token
   var wpcom = WPCOM(token.access_token);
 
-  // expose wpcom globally to test
+  // expose wpcom globaly to test in console
   window.wpcom = wpcom;
 });
 
@@ -1552,6 +1552,7 @@ exports.reset = function(){
 exports.token = function(){
   return localStorage.wp_oauth ? JSON.parse(localStorage.wp_oauth) : null;
 };
+
 },{"debug":9,"querystring":6,"url":7}],9:[function(require,module,exports){
 
 /**
