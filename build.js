@@ -1,17 +1,22 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function (global){
 
 /**
  * Module dependencies
  */
 
 var WPCOM = require('wpcom');
-var oauth = require('wpcom-oauth-cors')('41012');
-
+var oauth = require('wpcom-oauth-cors')('41012', { scope: global });
 
 oauth.get(function(token){
   console.log(token);
 });
 
+document.getElementById('reset').onclick = function(e) {
+  oauth.clean();
+};
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"wpcom":12,"wpcom-oauth-cors":8}],2:[function(require,module,exports){
 
 },{}],3:[function(require,module,exports){
@@ -4188,7 +4193,7 @@ function localstorage(){
 
 },{"./debug":29}],29:[function(require,module,exports){
 arguments[4][10][0].apply(exports,arguments)
-},{"/Users/retrofox/lab/WCBA2015/client/node_modules/wpcom-oauth-cors/node_modules/debug/debug.js":10,"ms":30}],30:[function(require,module,exports){
+},{"/Users/retrofox/lab/WCBA2015/node_modules/wpcom-oauth-cors/node_modules/debug/debug.js":10,"ms":30}],30:[function(require,module,exports){
 /**
  * Helpers.
  */
