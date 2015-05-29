@@ -14,6 +14,7 @@ oauth.get(function(data){
   var wpcom = WPCOM(data.access_token);
 
   // expose wpcom globaly to test in console
+  window.WPCOM = WPCOM;
   window.wpcom = wpcom;
 });
 
